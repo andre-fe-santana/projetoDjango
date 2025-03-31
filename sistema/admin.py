@@ -4,7 +4,7 @@ from sistema import models
 # Aqui fica o registro do Usuário (classe)
 @admin.register(models.Usuario)
 class UsuarioAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nome', 'sobrenome', 'email', 'ativo',)
+    list_display = ('id', 'nome', 'sobrenome', 'email', 'ativo', 'imagem',)
 
 @admin.register(models.Filme)
 class FilmeAdmin(admin.ModelAdmin):
