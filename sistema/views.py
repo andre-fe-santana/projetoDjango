@@ -5,5 +5,13 @@ from django.shortcuts import render
 def index(request): #request é requisição
     return render(
         request,
-        'sistema/index.html',
+        'sistema/sistema.html',
     )
+
+def apresentacao(request): #request é requisição
+    return render(
+        request,
+        'sistema/apresentacao.html',
+    )
+
+
