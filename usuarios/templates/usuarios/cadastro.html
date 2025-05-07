@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Cadastro de Usuário</h1>
-    <form action="" method="post">
+    <form  method="post" enctype="multipart/form-data">
         <!-- django vai criar os inputs e labels auto -->
         {% csrf_token %}
         {{ form.as_p }}

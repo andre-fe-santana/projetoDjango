@@ -3,11 +3,12 @@ from usuarios.forms import UsuarioForm
 
 # Create your views here.
 
-def login(request):
+def login(request): #request é requisição
     return render(
         request,
-        'login.html',
+        'usuarios/login.html',
     )
+    
 
 def criarUsuario(request):
     # Verificar se a requisição será do tipo GET ou POST
@@ -27,7 +28,7 @@ def criarUsuario(request):
 
     return render(
         request,
-        'cadastro.html',
+        'usuarios/cadastro.html',
         {'form': form}
     )
 

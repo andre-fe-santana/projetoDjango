@@ -1,11 +1,18 @@
 from django.shortcuts import render, redirect
 from filmes.forms import FilmeForm
+from sistema.models import Filme
 
-# Create your views here.
-def cadastro(request):
+def mostrarFilmes(request):
+    filmes = Filme.objects.all()
+
+    context = {
+        'filmes': filmes
+    }
+
     return render(
         request,
-        'cadastro.html'
+        'filmes/listar.html',
+        context, 
     )
 
 def criarFilme(request):
@@ -14,14 +21,14 @@ def criarFilme(request):
 
         if form.is_valid():
             form.save()
-            # return redirect('/filmes') #vai levar pra mostrar a lista de filmes
+            return redirect('filmes/') #vai levar pra mostrar a lista de filmes
 
     else: # GET
         form = FilmeForm()
 
     return render(
         request,
-        'cadastro.html',
+        'filmes/cadastro.html',
         {'form': form}
     )
 

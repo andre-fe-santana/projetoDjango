@@ -4,8 +4,8 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('sistema.urls')),
-    path('usuario/', include('usuarios.urls')),
-    path('filme/', include('filmes.urls')),
+    path('usuarios/', include('usuarios.urls')),
+    path('filmes/', include('filmes.urls')),
 ]
 
 # http://127.0.0.1:8000/ => A home do projeto inteiro
