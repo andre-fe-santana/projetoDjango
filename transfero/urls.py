@@ -5,6 +5,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('sistema.urls')),
     path('usuario/', include('usuarios.urls')),
+    path('filme/', include('filmes.urls')),
 ]
 
 # http://127.0.0.1:8000/ => A home do projeto inteiro
