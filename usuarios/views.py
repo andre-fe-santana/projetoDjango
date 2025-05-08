@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from usuarios.forms import UsuarioForm
+from sistema.models import Usuario
 
 # Create your views here.
 
@@ -9,6 +10,18 @@ def login(request): #request é requisição
         'usuarios/login.html',
     )
     
+def mostrarUsuarios(request):
+    usuarios = Usuario.objects.all()
+
+    context = {
+        'usuarios': usuarios
+    }
+
+    return render(
+        request,
+        'usuarios/listar.html',
+        context, 
+    )
 
 def criarUsuario(request):
     # Verificar se a requisição será do tipo GET ou POST
@@ -20,7 +33,7 @@ def criarUsuario(request):
         #Fazendo validação dos forms
         if form.is_valid():
             form.save()
-            return redirect('/usuario/login') #você só vai redirecionar caso o formulário SEJA válido
+            return redirect('/usuarios/login') #você só vai redirecionar caso o formulário SEJA válido
     
     else:
         # Se a requisição for GET, exibir o formulário de cadastro

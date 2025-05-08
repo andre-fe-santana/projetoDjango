@@ -21,7 +21,7 @@ def criarFilme(request):
 
         if form.is_valid():
             form.save()
-            return redirect('filmes/') #vai levar pra mostrar a lista de filmes
+            return redirect('/filmes') #vai levar pra mostrar a lista de filmes
 
     else: # GET
         form = FilmeForm()
