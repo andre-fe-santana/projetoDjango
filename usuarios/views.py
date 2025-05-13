@@ -1,47 +1,32 @@
 from django.shortcuts import render, redirect
+
 from usuarios.forms import UsuarioForm
-from sistema.models import Usuario
 
 # Create your views here.
 
-def login(request): #request é requisição
+def login(request):
     return render(
         request,
-        'usuarios/login.html',
-    )
-    
-def mostrarUsuarios(request):
-    usuarios = Usuario.objects.all()
-
-    context = {
-        'usuarios': usuarios
-    }
-
-    return render(
-        request,
-        'usuarios/listar.html',
-        context, 
+        'usuarios/login.html'
     )
 
 def criarUsuario(request):
     # Verificar se a requisição será do tipo GET ou POST
     if request.method == 'POST':
-        form = UsuarioForm(request.POST, request.FILES) # Será criada um objeto Usuario(model) com os dados enviados 
-        #POST -> são os campos do forms (nome, sobrenome, etc.) preenchidos
-        #FILES -> é para passar as imagens
-        
-        #Fazendo validação dos forms
-        if form.is_valid():
+        form = UsuarioForm(request.POST, request.FILES)    
+        # Será criado um objto Usuario(model) com dos dados enviados.
+        # post -> São os campos do forms (nome, sobrenome) preenchidos.
+        # files -> Contém os arquivos ou e/imagens. 
+        if form.is_valid(): # Se os dados forem válidos, são salvos no BD.
             form.save()
-            return redirect('/usuarios/login') #você só vai redirecionar caso o formulário SEJA válido
+            return redirect('usuario/login')
     
     else:
         # Se a requisição for GET, exibir o formulário de cadastro
-        form = UsuarioForm() #mostra o formulário em branco, afinal nenhum 
-
+        form = UsuarioForm()
+    
     return render(
         request,
-        'usuarios/cadastro.html',
+        'usuarios/cadastrar.html',
         {'form': form}
     )
-
