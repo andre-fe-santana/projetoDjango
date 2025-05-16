@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
     <head> {% include "partials/_head.html" %} </head>
@@ -5,46 +6,66 @@
             <header> {% include "partials/_header.html" %} </header>
             <main class="cadastro-body">
                 <div class="cadastro-container">
-                    <form action="POST" class="cadastro-form">
-                        <div class="cadastro-group">
-                            <div class="cadastro-input">
-                                <label for="primeiroNome">Nome</label>
-                                <input type="text" placeholder="Seu primeiro nome" name="primeiroNome" required>
+                    
+                    <div class="cadastro-info">
+                        <div class="cadastro-title">
+                            <h2>Bem-vindo</h2>
+                            <p>Informe seus dados para cadastrar nos sistemas</p>
+                        </div>
+                        <div class="cadastro-img">
+                            <img src="{% static 'global/assets/images/support-banner-image.jpg' %} " alt="Banner do site">
+                        </div>
+                    </div>
+
+                    <div class="cadastro-form">
+                        <form action="POST">
+                            <div class="cadastro-group">
+                                <div class="cadastro-input">
+                                    <label for="primeiroNome">Nome</label>
+                                    <input type="text" placeholder="Seu primeiro nome" name="primeiroNome" required>
+                                </div>
+                                <div class="cadastro-input">
+                                    <label for="segundoNome">Sobrenome</label>
+                                    <input type="text" placeholder="Seu segundo nome" name="segundoNome" required>
+                                </div>
                             </div>
-                            <label for="segundoNome">Sobrenome</label>
-                            <input type="text" placeholder="Seu segundo nome" name="segundoNome" required>
-                        </div>
-
-                        <div class="cadastro-group">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" placeholder="Email" required>
-                            
-                            <label for="telefone">Telefone</label>
-                            <div class="cadastro-group-phone">
-                                <input list="paises" name="telefone">
-                                <datalist id="paises">
-                                    <option value="+55">+55</option>
-                                    <option value="+52">+52</option>
-                                    <option value="+53">+53</option>
-                                </datalist>
-                                <input type="tel" name="Telefone" placeholder="Telefone">
+                            <div class="cadastro-group">
+                                <div class="cadastro-input">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" placeholder="Email" required>
+                                </div>
+                        
+                                <div class="cadastro-input">
+                                    <label for="telefone">Telefone</label>
+                                    <div class="cadastro-group-phone">
+                                        <select name="" id="">
+                                            <option value="+55">+55</option>
+                                            <option value="+54">+54</option>
+                                            <option value="+53">+53</option>
+                                            <option value="+52">+52</option>
+                                        </select>
+                                        <input type="tel" name="Telefone" placeholder="Telefone">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="cadastro-group">
-                            <label for="CPF">CPF</label>
-                            <input type="text" name="CPF" placeholder="CPF" required>
-                            <label for="senha">Senha</label>
-                            <input type="password" name="senha" placeholder="Senha" required>
-                        </div>
-                    </form>
-
-                    <p class="cadastro-footer">
-                        <input type="checkbox" name="" id=""> <span>Eu concordo com os Termos de Uso e Política de Privacidade</span>
-                        <a href="#">
-                            <button class="btn-primary" type="submit">Cadastrar</button>
-                        </a>
-                    </p>
+                            <div class="cadastro-group">
+                                <div class="cadastro-input">
+                                    <label for="CPF">CPF</label>
+                                    <input type="text" name="CPF" placeholder="CPF" required>
+                                </div>
+                                <div class="cadastro-input">
+                                    <label for="senha">Senha</label>
+                                    <input type="password" name="senha" placeholder="Senha" required>
+                                </div>
+                            </div>
+                            <div class="cadastro-footer">
+                                <input type="checkbox" name="" id=""> <span>Eu concordo com os Termos de Uso e Política de Privacidade</span>
+                                <a href="#">
+                                    <button class="btn-primary" type="submit">Cadastrar</button>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
 
                     <style>
                         .cadastro-body{
@@ -52,32 +73,25 @@
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            height: 500px;
-                        }
-
-                        .cadastro-body img {
-                            max-width: 100%;
+                            height: 900px;
                         }
 
                         .cadastro-container{
                             background-color: #1a1a1d;
-                            padding: 24px;
                             box-shadow: 0 0 200px rgba(176, 6, 16, 0.5);
-                            /* text-align: center; */
-                            max-width: 700px;
-                            
-                            /* display: grid;
-                            grid-template-columns: 1fr 1fr; 
+                            max-width: 1000px;
+
+                            display: grid;
+                            grid-template-columns: 1fr 2fr; 
                             gap: 30px;
-                            align-self: center; */
+                            align-self: center;
+                            justify-content: center;
+
+                            padding: 36px;
                         }
 
-                        .cadastro-group label{
-                            margin-bottom: 50px !important; 
-                        }
-
-                        .cadastro-container h2{
-                            margin-bottom: 8px;
+                        .cadastro-title h2{
+                            margin-bottom: 16px;
                             font-size: 32px;
                         }
 
@@ -85,18 +99,40 @@
                             color: #bbb;
                             margin-bottom: 32px;
                         }
-                        
-                        .cadastro-form {
-                            display: grid;
-                            grid-template-columns: 1fr 1fr; 
-                            gap: 30px;
-                            align-self: center;
+
+                        .cadastro-form{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            padding: 24px;
+                            background-color: #0e0e10;
+                            border-radius: 8px;
+                            border: 5px solid #2c2c31 ;
                         }
 
-                        .cadastro-form input {
+                        .cadastro-form label{
+                            font-weight: bold;
+                            margin-bottom: 10px;
+                        }
+
+                        .cadastro-info img {
+                            max-width: 100%;
+                            border: 6px solid #2c2c31;
+                            width: 400px;
+                            justify-content: center;
+                        }
+
+                        .cadastro-group{
+                            display: grid;
+                            grid-template-columns: 1fr 1fr;
+                            gap: 10px;
+                            margin-bottom: 24px;
+                        }
+
+                        .cadastro-input input{
                             display: block; /* mudando o comportamento do elemento div */
                             width: 100%;
-                            padding: 8px;
+                            padding: 12px;
                             border-radius: 8px;
                             margin-bottom: 16px;
                             border: none;
@@ -106,8 +142,19 @@
 
                         .cadastro-group-phone {
                             display: grid;
-                            grid-template-columns: 1fr 3fr;
+                            grid-template-columns: 1fr 2fr;
                             gap: 10px;
+                        }
+
+                        .cadastro-group-phone select {
+                            display: block; /* mudando o comportamento do elemento div */
+                            width: 100%;
+                            padding: 12px;
+                            border-radius: 8px;
+                            margin-bottom: 16px;
+                            border: none;
+                            background-color: #2c2c31;
+                            color: #fff;
                         }
 
                         .btn-primary {
@@ -128,9 +175,15 @@
                             margin-top: 20px;
                             color: #aaa;
                             font-size: 14px;
-                            display: grid;
+                            display: flex;
+                            align-items: center;
+                            gap: 30px;
                         }
 
+                        .cadastro-footer input{
+                            width: 20px;
+                            color: #1a1a1d;
+                        }
                     </style>
 
                 </div>
